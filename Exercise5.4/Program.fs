@@ -1,8 +1,14 @@
-﻿// Learn more about F# at http://fsharp.org
+﻿let doubleNum x = x * 2
+let sqrNum x  = x * x
 
-open System
+let pclQuadFourth func x =
+  let rec inner innerX n =
+    if n = 1 then
+        func innerX
+    else
+        inner <| func innerX <| n - 1
+  inner x 2
 
-[<EntryPoint>]
-let main argv =
-    printfn "Hello World from F#!"
-    0 // return an integer exit code
+pclQuadFourth doubleNum 2;;
+pclQuadFourth sqrNum 2;;
+
